@@ -16,7 +16,7 @@ export class ShoppingListPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private slService: ShoppingListService) {
   }
   ionViewWillEnter() {
-    this.loadItems
+    this.loadItems();
   }
 
   onAddItem(form: NgForm) {
@@ -27,5 +27,9 @@ export class ShoppingListPage {
   
   private loadItems() {
     this.listItems = this.slService.getItems();
+  }
+  onDelete(index:number) {
+      this.slService.removeItem(index);
+      this.loadItems();
   }
 }
