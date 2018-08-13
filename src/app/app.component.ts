@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SigninPage } from '../pages/signin/signin';
 import { SignupPage } from '../pages/signup/signup';
+import firebase from 'firebase';
 
 
 @Component({
@@ -17,6 +18,10 @@ export class MyApp {
   @ViewChild('nav') nav:NavController
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,private menuCtrl:MenuController) {
+    firebase.initializeApp({
+      apiKey: "AIzaSyBV0O4anpBSVnfqnRs0D0gdLT0qDDgT9yY",
+      authDomain: "ionic-recipebook-40225.firebaseapp.com"
+    })
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -29,7 +34,7 @@ export class MyApp {
     this.menuCtrl.close();
   }
   onLogout() {
-    
+
   }
 }
 
