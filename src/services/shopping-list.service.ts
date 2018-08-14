@@ -32,4 +32,14 @@ export class ShoppingListService {
             return res.json();
         })
     }
+    fetchlist(token:string) {
+        let userId = this.authService.getActiveUser().uid;
+        return this.http.get('https://ionic-recipebook-40225.firebaseio.com/' + userId + '/shopping-list.json?auth='+ token)
+        .map((res:Response)=>{
+            return res.json();
+        })
+        .do((data)=>{
+            this.ingredients = data;
+        })
+    }
 }
