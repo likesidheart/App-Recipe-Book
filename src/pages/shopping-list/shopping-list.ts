@@ -36,6 +36,9 @@ export class ShoppingListPage {
     popover.present({ ev: event });
     popover.onDidDismiss(
       data => {
+        if(!data) {
+          return;
+        }
         if (data.action == 'load') {
           loading.present();
           this.authService.getActiveUser().getIdToken()
